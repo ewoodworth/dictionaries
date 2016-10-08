@@ -66,11 +66,10 @@ def find_unique_common_items(items1, items2):
     """
     ## Look at hints afterr last week, you did this already!!
     items1_set = {item for item in items1}
-    print items1_set
     items2_set = {item for item in items2}
-    print items2_set
     intersection = items1_set & items2_set
-    find_unique_common_items = [item for item in intersection]
+    unique_common_items = [item for item in intersection]
+    return unique_common_items
 
 def get_sum_zero_pairs(numbers):
     """Given list of numbers, return list of pair summing to 0.
