@@ -9,7 +9,6 @@ def without_duplicates(words):
     """Given a list of words, return list with duplicates removed.
 
     For example::
-
         >>> sorted(without_duplicates(
         ...     ["rose", "is", "a", "rose", "is", "a", "rose"]))
         ['a', 'is', 'rose']
@@ -32,7 +31,11 @@ def without_duplicates(words):
         [2, 33333, 111111]
     """
 
-    return []
+    words_set = {word for word in words}
+    words_list = [word for word in words_set]
+    return words_list
+    # words_list = [word for word in words_set]
+    # return words_list.sort()
 
 
 def find_unique_common_items(items1, items2):
@@ -61,8 +64,13 @@ def find_unique_common_items(items1, items2):
         >>> sorted(find_unique_common_items(["2", "1", 2], [2, 1]))
         [2]
     """
-
-    return []
+    ## Look at hints afterr last week, you did this already!!
+    items1_set = {item for item in items1}
+    print items1_set
+    items2_set = {item for item in items2}
+    print items2_set
+    intersection = items1_set & items2_set
+    find_unique_common_items = [item for item in intersection]
 
 def get_sum_zero_pairs(numbers):
     """Given list of numbers, return list of pair summing to 0.
