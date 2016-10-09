@@ -61,7 +61,7 @@ def find_unique_common_items(items1, items2):
         >>> sorted(find_unique_common_items(["2", "1", 2], [2, 1]))
         [2]
     """
-    ## Look at hints afterr last week, you did this already!!
+    # Thisis similar to a tactic I took last week, and could have done even fewer lines, but this is the only way I see it. Something for advising.
     items1_set = {item for item in items1}
     items2_set = {item for item in items2}
     intersection = items1_set & items2_set

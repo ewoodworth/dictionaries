@@ -29,7 +29,12 @@ def count_words(phrase):
         {'Porcupine': 1, 'do.': 1, 'porcupine': 1, 'see,': 1}
     """
 
-    return {}
+    #if I wanted to be thorough, and punctuation is part of a word, I'd want to ignore it for the count do "do" and "do!" get counted together.
+    word_counts = {}
+    phrase = phrase.split(" ")
+    for i in range(len(phrase)):
+        word_counts[phrase[i]] = word_counts.get(phrase[i], 0) + 1   
+    return word_counts
 
 
 def get_melon_price(melon_name):
@@ -51,8 +56,16 @@ def get_melon_price(melon_name):
         >>> get_melon_price('Tomato')
         'No price found'
     """
-
-    return 0
+    melon_prices = {"Watermelon": 2.95,
+                    "Cantaloupe": 2.50,
+                    "Musk": 3.25,
+                    "Christmas": 14.25}
+    try:                
+        melon_price = melon_prices[melon_name]
+    ##Custom error message
+    except KeyError:
+        return "No price found"
+    return melon_price
 
 
 def word_length_sorted(words):
