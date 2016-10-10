@@ -84,7 +84,19 @@ def word_length_sorted(words):
         [(1, ['a']), (2, ['an', 'ok']), (3, ['day']), (5, ['apple'])]
     """
 
-    return []
+def word_length_sorted(words):
+    max_word_length = list({len(word) for word in words})[-1]
+    max_word_length = int(max_word_length)
+    word_lengths = {i:[] for i in range(max_word_length)}
+    print word_lengths
+    for k, v in word_lengths.items():
+        for word in words:
+            if len(word) == k:
+                try:
+                    v.append(word)
+                except:
+                    pass
+    return word_lengths
 
 
 def translate_to_pirate_talk(phrase):
@@ -125,8 +137,21 @@ def translate_to_pirate_talk(phrase):
         >>> translate_to_pirate_talk("my student is not a man!")
         'me swabbie be not a man!'
     """
+    english_pirate = {"sir":"matey", "hotel":"fleabag inn", "student":"swabbie", "man":"matey", "professor":"foul blaggart", "restaurant":"galley", "your":"yer", "excuse":"arr", "students":"swabbies", "are":"be", "restroom":"head", "my":"me", "is":"be"}
 
-    return ""
+    phrase = phrase.split(" ")
+    translation = ""
+    for word in phrase:
+        try:
+            word = english_pirate[word]
+            translaation += word
+            translation +=" "
+        except:
+            translation += word
+            translation += " "
+            pass
+    translation = translation.rstrip()
+    return translation
 
 
 def kids_game(names):
@@ -171,8 +196,22 @@ def kids_game(names):
     a dictionary (with the super-fast lookup they provide) can help;
     good solutions here will definitely require a dictionary.
     """
-
-    return []
+    reply = names[0]
+    names_dict = {name:[names.index(name), 1] for name in names}
+    for name, value in names_dict.items():
+        #ignore entries where dictionary[1]=0
+        if value[1] > 0:
+                #THIS THING BELOW. it keeps picking up where it left off rather than starting from names[0]
+                #THIS IS WHAT IS BROKEN#
+                for name in names:
+                    #find a word in the list that starts with reply[-1]
+                    if name[0] == reply[-1]:
+                        new_word = name
+                        #add it to the reply
+                        reply = reply + " " +new_word
+                        #deduct from dictionary entry[1]
+                        value[1] = value[1] - 1
+    return reply
 
 #####################################################################
 # You can ignore everything below this.
